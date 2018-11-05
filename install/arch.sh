@@ -146,17 +146,17 @@ echo -e "\n\n ${_n}Continuando com a instalação ...${_o}\n"; sleep 1
 
 # swap
 if [ "$_swap" != "" ]; then
-	echo -e "${_g}===> Criando e ligando Swap${_o}"; sleep 1
+	echo -e "${_g}==> Criando e ligando Swap${_o}"; sleep 1
 	mkswap $_swap && swapon $_swap
 fi
 
 # root
-echo -e "\n${_g}===> Formatando e Montando Root${_o}"; sleep 1
+echo -e "\n${_g}==> Formatando e Montando Root${_o}"; sleep 1
 mkfs.ext4 -F $_root && mount $_root /mnt
 
 # home
 if [ "$_home" != "" ]; then
-	echo -e "\n${_g}===> Formatando, Criando e Montando Home${_o}"; sleep 1
+	echo -e "\n${_g}==> Formatando, Criando e Montando Home${_o}"; sleep 1
 	mkfs.ext4 -F $_home && mkdir /mnt/home && mount $_home /mnt/home	
 fi
 
@@ -167,27 +167,27 @@ if [ "$_uefi" != "" ]; then
 fi
 
 # set morrorlist br (opcional)
-echo -e "${_g}===> Setando mirrorlist BR${_o}"; sleep 1
+echo -e "${_g}==> Setando mirrorlist BR${_o}"; sleep 1
 wget "https://raw.githubusercontent.com/leoarch/arch-install/master/mirror-br" -O /etc/pacman.d/mirrorlist 2>/dev/null
 
 # instalando base e base-devel
-echo -e "${_g}===> Instalando base/base-devel${_o}"; sleep 1
+echo -e "${_g}==> Instalando base/base-devel${_o}"; sleep 1
 pacstrap /mnt base base-devel
 
 # gerando fstab
-echo -e "${_g}===> Gerando FSTAB${_o}"; sleep 1
+echo -e "${_g}==> Gerando FSTAB${_o}"; sleep 1
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
 # download script mode chroot
-echo -e "${_g}===> Baixando script para ser executado como chroot${_o}"; sleep 1
+echo -e "${_g}==> Baixando script para ser executado como chroot${_o}"; sleep 1
 wget https://raw.githubusercontent.com/leoarch/arch-linux/install/master/chroot.sh && chmod +x chroot.sh && mv chroot.sh /mnt
 
 # run script
-echo -e "${_g}===> Executando script ...${_o}"; sleep 1
+echo -e "${_g}==> Executando script ...${_o}"; sleep 1
 arch-chroot /mnt ./chroot.sh
 
 # umount
-echo -e "${_g}===> Desmontando partições${_o}"; sleep 1
+echo -e "${_g}==> Desmontando partições${_o}"; sleep 1
 umount -R /mnt
 
 cat <<EOI
