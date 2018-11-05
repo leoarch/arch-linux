@@ -58,7 +58,7 @@ echo
 
 lsblk -l | grep disk # comando para listar os discos
 
-cho -e "\n${_g} Logo acima estão listados os seus discos${_o}\n"
+echo -e "\n${_g} Logo acima estão listados os seus discos${_o}\n"
 echo -en "\n${_g} Informe o nome do seu disco${_o} (Ex: ${_r}sda${_o}):${_w} "; read  _hd
 _hd="/dev/${_hd}"
 export _hd
