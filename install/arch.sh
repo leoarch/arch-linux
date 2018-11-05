@@ -4,7 +4,7 @@ tput reset
 
 # cores
 __Y=$(echo -e "\e[33;1m");__A=$(echo -e "\e[36;1m");__R=$(echo -e "\e[31;1m");__O=$(echo -e "\e[m");
-_n="\e[36;1m";_w="\e[37;1m";_g="\e[32;1m";_am="\e[33;1m";_o="\e[m";_r="\e[31;1m";
+_n="\e[36;1m";_w="\e[37;1m";_g="\e[32;1m";_am="\e[33;1m";_o="\e[m";_r="\e[31;1m";_p="\e[33;0m";
 
 cat <<EOL
 		
@@ -58,7 +58,7 @@ echo
 
 lsblk -l | grep disk # comando para listar os discos
 
-echo -e "\n${_g} Logo acima estão listados os seus discos${_o}\n"
+echo -e "\n${_g} Logo acima estão listados os seus discos${_o}"
 echo -en "\n${_g} Informe o nome do seu disco${_o} (Ex: ${_r}sda${_o}):${_w} "; read  _hd
 _hd="/dev/${_hd}"
 export _hd
@@ -71,7 +71,7 @@ cfdisk $_hd # entrando no particionador cfdisk
 
 tput reset; setterm -cursor off
 
-echo -e "\n${_n} OK, você definiu as partições, caso deseje cancelar, precione${_w}: ${_am}Ctrl+c${_o}"
+echo -e "\n${_n} OK, você definiu as partições, caso deseje cancelar, precione${_w}: ${_am}Ctrl+C${_o}"
 echo -e "\n${_n} Use os número das partições nas perguntas abaixo${_w}\n"
 
 echo "==========================================================="
@@ -80,11 +80,11 @@ echo "==========================================================="
 
 echo -e "\n${_n} CONSULTE ACIMA O NÚMERO DAS SUAS PARTIÇÕES${_o}"
 
-echo -en "\n${_g} Digite o número da partição UEFI.${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "; read _uefi
-echo -en "\n${_g} Digite o número da partição SWAP.${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "; read _swap
-echo -en "\n${_g} Digite o número da partição RAÍZ /.${_o}${_am}Partição OBRIGATÓRIA!${_o}:${_w} "		 ; read  _root
-[ "$_root" == "" ] && { echo -e "Atenção: Partição RAÍZ é obrigatória! Execute novamente o script e digite o número correto!"; exit 1; }
-echo -en "\n${_g} Digite o número da partição HOME.${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "; read _home
+echo -en "\n ${_p}Digite o número da partição${_o} ${_g}UEFI${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "; read _uefi
+echo -en "\n ${_p}Digite o número da partição${_o} ${_g}SWAP${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "; read _swap
+echo -en "\n ${_p}Digite o número da partição${_o} ${_g}RAÍZ /${_o}${_am} (Partição OBRIGATÓRIA!)${_o}:${_w} "		 ; read  _root
+[ "$_root" == "" ] && { echo -e "\n${_am}Atenção:${_o} ${_p}Partição RAÍZ é obrigatória! Execute novamente o script e digite o número correto!\n${_o}"; exit 1; }
+echo -en "\n${_p} Digite o número da partição${_o} ${_g}HOME${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "; read _home
 
 _root="/dev/sda${_root}"; export _root
 
