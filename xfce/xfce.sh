@@ -82,7 +82,7 @@ localectl set-x11-keymap br abnt2
 echo -e "${_g}==>Configurando gerenciador de login lightdm${_o}"; sleep 1
 sed -i 's/^#greeter-session.*/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
 sed -i '/^#greeter-hide-user=/s/#//' /etc/lightdm/lightdm.conf
-curl -s -o /usr/share/pixmaps/bg-lightdm.jpg 'https://raw.githubusercontent.com/leoarch/arch-install/master/bg-lightdm.jpg'
+curl -s -o /usr/share/pixmaps/bg-lightdm.jpg 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/bg-lightdm.jpg'
 echo -e "[greeter]\nbackground=/usr/share/pixmaps/bg-lightdm.jpg" > /etc/lightdm/lightdm-gtk-greeter.conf
 
 # keyboard
@@ -93,7 +93,7 @@ curl -s -o /etc/X11/xorg.conf.d/10-evdev.conf 'https://raw.githubusercontent.com
 
 
 echo -e "${_g}===>Removendo borda dos ícones do desktop${_o}"; sleep 1
-curl -s -o /home/${_user}/.gtkrc-2.0 'https://raw.githubusercontent.com/leoarch/arch-linux/xfce/master/icon-desktop'
+curl -s -o /home/${_user}/.gtkrc-2.0 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/theme/icon-desktop'
 
 
 echo -e "${_g}===>Usando dhclient${_o}"; sleep 1
