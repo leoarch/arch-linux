@@ -58,9 +58,8 @@ echo
 
 lsblk -l | grep disk # comando para listar os discos
 
-echo -en "\n${_g}	Logo acima estão listados os seus discos${_o}\n"
-echo -en "\n${_g}	Informe o nome do seu disco${_o} (Ex: ${_r}sda${_o}):${_w} "
-read  _hd
+cho -e "\n${_g} Logo acima estão listados os seus discos${_o}\n"
+echo -en "\n${_g} Informe o nome do seu disco${_o} (Ex: ${_r}sda${_o}):${_w} "; read  _hd
 _hd="/dev/${_hd}"
 export _hd
 
@@ -68,12 +67,9 @@ echo
 
 cfdisk $_hd # entrando no particionador cfdisk
 
-if [ ! $? -eq 0 ]; then
-    echo -e "\n${_r} ATENÇÃO:${_o} Disco ${_am}$_hd${_o} não existe! Execute novamente o script e insira o número corretamente\n"; exit 1
-fi
+[ $? -ne 0 ] && { echo -e "\n${_r} ATENÇÃO:${_o} Disco ${_am}$_hd${_o} não existe! Execute novamente o script e insira o número corretamente.\n"; exit 1; }
 
-tput reset
-setterm -cursor off
+tput reset; setterm -cursor off
 
 echo -e "\n${_n} OK, você definiu as partições, caso deseje cancelar, precione${_w}: ${_am}Ctrl+c${_o}"
 echo -e "\n${_n} Use os número das partições nas perguntas abaixo${_w}\n"
@@ -84,48 +80,28 @@ echo "==========================================================="
 
 echo -e "\n${_n} CONSULTE ACIMA O NÚMERO DAS SUAS PARTIÇÕES${_o}"
 
-echo -en "\n${_g} Digite o número da partição UEFI.${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "
-read _uefi
+echo -en "\n${_g} Digite o número da partição UEFI.${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "; read _uefi
+echo -en "\n${_g} Digite o número da partição SWAP.${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "; read _swap
+echo -en "\n${_g} Digite o número da partição RAÍZ /.${_o}${_am}Partição OBRIGATÓRIA!${_o}:${_w} "		 ; read  _root
+[ "$_root" == "" ] && { echo -e "Atenção: Partição RAÍZ é obrigatória! Execute novamente o script e digite o número correto!"; exit 1; }
+echo -en "\n${_g} Digite o número da partição HOME.${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "; read _home
 
-echo
-
-echo -en "\n${_g} Digite o número da partição SWAP.${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "
-read _swap
+_root="/dev/sda${_root}"; export _root
 
 if [ -n "$_uefi" ]; then
-	_uefi="/dev/sda${_uefi}"
-	export _uefi
-elif [ -n "$_swap" ]; then
-	_swap="/dev/sda${_swap}"
-	export _swap
+	_uefi="/dev/sda${_uefi}"; export _uefi
 fi
 
-echo -en "\n${_g} Digite o número da partição raíz /.${_o}${_am}Partição OBRIGATÓRIA!${_o}:${_w} "
-read  _root
-
-if [ "$_root" == "" ]; then
-	cat <<STI
-	
-	${__R}=====================================
-	Atenção: Partição RAÍZ é obrigatória!
-	=====================================${__O}
-
-STI
-	echo -en "${_am} Execute novamente o script, crie a partição raíz / se necessário e informe o número correto.${_o}\n\n"; exit 1;
-else
-	_root="/dev/sda${_root}"
-	export _root
+if [ -n "$_swap" ]; then
+	_swap="/dev/sda${_swap}"; export _swap
 fi
-
-echo -en "\n${_g} Digite o número da partição HOME.${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "
-read _home
 
 if [ -n "$_home" ]; then
-	_home="/dev/sda${_home}"
-	export _home
+	_home="/dev/sda${_home}"; export _home
 fi
 
 tput reset
+
 cat <<STI
  ${__A}======================
  Iniciando a Instalação
@@ -154,13 +130,13 @@ if [ "$_home" != "" ]; then
 else
 	echo -e " ${_g}HOME${_o} = SEM HOME\n"
 fi
+
 echo "==========================================================="
 fdisk -l $_hd
 echo "==========================================================="
 
-echo -ne "\n Verifique se as informações estão corretas comparando com os dados acima.\n"
-echo -ne "\n Se tudo estiver certo, Digite ${_g}s/S${_o} para continuar ou ${_g}n/N${_o} para cancelar: "
-read -n 1 comecar
+echo -e "\n Verifique se as informações estão corretas comparando com os dados acima.\n"
+echo -ne "\n Se tudo estiver certo, Digite ${_g}s/S${_o} para continuar ou ${_g}n/N${_o} para cancelar: "; read -n 1 comecar
 
 if [[ "$comecar" != @(S|s) ]]; then
 	exit $?
