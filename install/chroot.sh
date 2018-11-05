@@ -82,16 +82,16 @@ fi
 # password
 echo -e "${_g}==> Criando senha root${_o}"
 passwd << EOF
-	$_proot
-	$_proot
+$_proot
+$_proot
 EOF
 sleep 0.5
 
 echo -e "${_g}==> Criando senha user${_o}"
 useradd -m -g users -G wheel -s /bin/bash $_user
 passwd $_user << EOF
-	$_puser
-	$_puser
+$_puser
+$_puser
 EOF
 sleep 0.5
 
