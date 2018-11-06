@@ -6,4 +6,5 @@ https://youtu.be/51KifCzzZD0
 
 https://youtu.be/jPSsAXi-uXA
 
-3 - Em breve, i3 / gnome
+3 - i3
+
