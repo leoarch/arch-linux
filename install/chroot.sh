@@ -1,13 +1,11 @@
 #!/bin/bash
 
-###################################################
-#												  #
-# ==> Autor: leo.arch                             #
-# ==> Email: leo.arch@bol.com.br                  #
-# ==> Script: chroot.sh v1.0                      #
-# ==> Descrição: executa arch-chroot              #
-#												  #
-###################################################
+#############################
+# ==> Autor: leo.arch                                #
+# ==> Email: leo.arch@bol.com.br         #
+# ==> Script: chroot.sh v1.0                     #
+# ==> Descrição: executa arch-chroot   #
+#############################
 
 # variables user and pass root/user
 _user="leo"
@@ -71,9 +69,7 @@ else
 	echo -e "${_g}==> Instalando e Configurando o GRUB${_o}"
 	pacman -S grub --noconfirm
 	# dual boot
-	if [ "_dualboot" == "s" ]; then
-		pacman -S os-prober --noconfirm
-	fi
+	[ "_dualboot" == "s" ] && { pacman -S os-prober --noconfirm; }
 	grub-install --target=i386-pc --recheck /dev/sda
 	cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
 	grub-mkconfig -o /boot/grub/grub.cfg
