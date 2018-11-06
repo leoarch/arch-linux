@@ -45,7 +45,7 @@ else
 fi
 
 echo -en "\n${_g}Digite s/S para continuar ou n/N para cancelar: ${_o}:${_w} "; read _go
-[[ "$_go" != @(s|S) ]] && { echo -e "\n${_ver}Script cancelado\n${_o}"; exit 1;}
+[[ "$_go" != @(s|S) ]] && { echo -e "\n${_ver}Script cancelado\n${_o}"; exit 1; }
 
 # xorg
 echo -e "\n${_g}==>Instalando xorg${_o}"; sleep 1
