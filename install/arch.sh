@@ -44,10 +44,7 @@ cat <<EOL
 EOL
 
 setterm -cursor off
-
-echo -ne "\n "
 read -n 1 INSTALAR
-
 tput reset
 
 [[ "$INSTALAR" != @(S|s) ]] && { echo -e "\nScript cancelado!!\n"; exit 1; }
