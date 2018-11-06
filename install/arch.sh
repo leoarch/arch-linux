@@ -84,18 +84,9 @@ echo -en "\n ${_p}Digite o número da partição${_o} ${_g}RAÍZ /${_o}${_am} (P
 echo -en "\n${_p} Digite o número da partição${_o} ${_g}HOME${_o} ou tecle ${_am}ENTER${_o} caso não tenha:${_w} "; read _home
 
 _root="/dev/sda${_root}"; export _root
-
-if [ -n "$_uefi" ]; then
-	_uefi="/dev/sda${_uefi}"; export _uefi
-fi
-
-if [ -n "$_swap" ]; then
-	_swap="/dev/sda${_swap}"; export _swap
-fi
-
-if [ -n "$_home" ]; then
-	_home="/dev/sda${_home}"; export _home
-fi
+[ -n "$_uefi" ] && { _uefi="/dev/sda${_uefi}"; export _uefi; }
+[ -n "$_swap" ] && { _swap="/dev/sda${_swap}"; export _swap; }
+[ -n "$_home" ] && { _home="/dev/sda${_home}"; export _home; }
 
 tput reset
 
