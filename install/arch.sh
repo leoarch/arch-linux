@@ -50,9 +50,7 @@ read -n 1 INSTALAR
 
 tput reset
 
-if [[ "$INSTALAR" != @(S|s) ]]; then
-	exit $?
-fi
+[[ "$INSTALAR" != @(S|s) ]] && { echo -e "\nScript cancelado!!\n"; exit 1; }
 
 echo
 
@@ -60,8 +58,7 @@ lsblk -l | grep disk # comando para listar os discos
 
 echo -e "\n${_g} Logo acima estão listados os seus discos${_o}"
 echo -en "\n${_g} Informe o nome do seu disco${_o} (Ex: ${_r}sda${_o}):${_w} "; read  _hd
-_hd="/dev/${_hd}"
-export _hd
+_hd="/dev/${_hd}"; export _hd
 
 echo
 
