@@ -51,8 +51,8 @@ fi
 echo -e "${_g}==> Instalando i3${_e}"; sleep 1
 pacman -S i3-gaps i3blocks --noconfirm
 
-echo -e "${_g}==> Instalando fontes e terminal${_e}"; sleep 1 # mude de acordo com suas necessidades
-pacman -S terminus-font ttf-dejavu termite gvfs --noconfirm
+echo -e "${_g}==> Instalando utilitários${_e}"; sleep 1 # mude de acordo com suas necessidades
+pacman -S terminus-font ttf-dejavu termite gvfs thunar thunar-volman thunar-archive-plugin rofi --noconfirm
 
 # firefox
 echo -e "${_g}==> Instalando firefox${_e}"; sleep 1
