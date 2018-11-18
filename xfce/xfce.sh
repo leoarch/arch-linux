@@ -79,7 +79,7 @@ pacman -S networkmanager network-manager-applet --noconfirm
 
 # essenciais
 echo -e "${_g}==> Instalando fonte, xterm e lixeira${_o}"; sleep 1
-pacman -S ttf-dejavu xterm gvfs --noconfirm # gvfs = lixeira
+pacman -S sudo ttf-dejavu xterm gvfs --noconfirm # gvfs = lixeira
 
 # tema opcional
 echo -e "${_g}==> Instalando temas${_o}"; sleep 1
