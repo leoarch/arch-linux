@@ -2,7 +2,7 @@
 
 __A=$(echo -e "\e[34;1m");__O=$(echo -e "\e[m");_g="\e[32;1m";_e="\e[m";_w="\e[37;1m";_y="\e[33;1m";
 
-[ "$EUID" -ne 0 ] && echo -e "${_am}É necessário rodar o script como root!${_e}\n${_g}Use:${_e} ${_w}sudo ./xfce.sh${_e}" && exit 1
+[ "$EUID" -ne 0 ] && echo -e "${_am}É necessário rodar o script como root!${_e}\n${_g}Use:${_e} ${_w}sudo ./install.sh${_e}" && exit 1
 
 echo -en "\n${_g}Qual o nome do seu usuário:${_e}${_w} "; read _user
 echo
@@ -59,11 +59,14 @@ echo -e "${_g}==> Instalando i3${_e}"; sleep 1
 pacman -S i3-gaps i3blocks --noconfirm
 
 echo -e "${_g}==> Instalando utilitários${_e}"; sleep 1 # mude de acordo com suas necessidades
-pacman -S terminus-font ttf-dejavu termite gvfs thunar thunar-volman thunar-archive-plugin rofi --noconfirm
+pacman -S terminus-font ttf-dejavu termite gvfs rofi sudo --noconfirm
+
+# echo -e "${_g}==> Instalando thunar e plugins${_e}"; sleep 1
+# pacman -S thunar thunar-volman thunar-archive-plugin  --noconfirm
 
 # firefox
-echo -e "${_g}==> Instalando firefox${_e}"; sleep 1
-pacman -S firefox firefox-i18n-pt-br flashplugin --noconfirm
+# echo -e "${_g}==> Instalando firefox${_e}"; sleep 1
+# pacman -S firefox firefox-i18n-pt-br flashplugin --noconfirm
 
 # audio
 echo -e "${_g}==> Instalando audio${_e}"; sleep 1
