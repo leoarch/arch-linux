@@ -82,7 +82,7 @@ pacman -S xdg-user-dirs --noconfirm && xdg-user-dirs-update
 
 # iniciar i3
 echo -e "${_g}==> Configurando pra iniciar o i3${_e}"; sleep 1
-echo 'exec i3' > ~/.xinitrc
+echo 'exec i3' > ~/home/${_user}/.xinitrc
 
 # keyboard X11 br abnt2
 echo -e "${_g}==> Setando keymap br abnt2 no ambiente X11${_e}"; sleep 1
@@ -93,7 +93,8 @@ echo -e "${_g}==> Criando arquivo de configuração para keyboard br abnt${_e}";
 curl -s -o /etc/X11/xorg.conf.d/10-evdev.conf 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/xorg.conf.d/keyboard'
 
 # configurando lightdm
-echo -e "${_g}==> Configurando gerenciador de login lightdm${_e}"; sleep 1
+echo -e "${_g}==> Instalando e configurando gerenciador de login lightdm${_e}"; sleep 1
+pacman -S lightdm lightdm-gtk-greeter --noconfirm
 sed -i 's/^#greeter-session.*/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
 sed -i '/^#greeter-hide-user=/s/#//' /etc/lightdm/lightdm.conf
 curl -s -o /usr/share/pixmaps/bg-lightdm.jpg 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/bg-lightdm.jpg'
