@@ -1,6 +1,13 @@
+#!/bin/bash
+
 __A=$(echo -e "\e[34;1m");__O=$(echo -e "\e[m");_g="\e[32;1m";_e="\e[m";_w="\e[37;1m";_y="\e[33;1m";
 
-[ "$EUID" -ne 0 ] && echo -e "${_y}É necessário rodar o script como root!${_e}\n${_g}Use:${_e} ${_w}sudo ./install.sh${_e}" && exit 1
+[ "$EUID" -ne 0 ] && echo -e "${_am}É necessário rodar o script como root!${_e}\n${_g}Use:${_e} ${_w}sudo ./xfce.sh${_e}" && exit 1
+
+echo -en "\n${_g}Qual o nome do seu usuário:${_e}${_w} "; read _user
+echo
+cat /etc/passwd | grep ${_user} >/dev/null 2>&1
+[ $? -ne 0 ] && { echo -e "${_am}Usuário não existe! Digite um usuário válido.\n${_e}"; exit 1; }
 
 echo -en "${_g}Você está instalando em uma VM? Didigte S para (Sim) ou N para (Não):${_e}${_w} "; read _vm
 [[ "$_vm" != @(s|S|n|N) ]] && { echo -e "\n${_y}Digite uma opção válida! s/S ou n/N\n${_e}"; exit 1; }
