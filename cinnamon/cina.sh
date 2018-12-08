@@ -75,7 +75,7 @@ pacman -S networkmanager network-manager-applet --noconfirm
 
 # essenciais
 echo -e "${_g}==> Instalando fonte, xterm e lixeira${_o}"; sleep 1
-pacman -S sudo ttf-dejavu terminus-font xterm gvfs --noconfirm # gvfs = lixeira
+pacman -S sudo ttf-dejavu terminus-font xterm gvfs --noconfirm
 
 # start cinnamon
 echo -e "${_g}==> Configurando pra iniciar o cinnamon${_o}"; sleep 1
