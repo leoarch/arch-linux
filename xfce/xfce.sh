@@ -86,7 +86,7 @@ echo -e "${_g}==> Instalando temas${_o}"; sleep 1
 pacman -S numix-gtk-theme papirus-icon-theme --noconfirm
 
 # criar diretórios
-echo -e "${_g}==> Criando diretórios{_o}"; sleep 1
+echo -e "${_g}==> Criando diretórios${_o}"; sleep 1
 pacman -S xdg-user-dirs --noconfirm && xdg-user-dirs-update
 
 # start xfce
