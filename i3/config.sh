@@ -6,7 +6,7 @@
 ### i3config ###
 ################
 
-sudo pacman -S flatpak git leafpad dunst thunar thunar-volman thunar-archive-plugin flameshot terminus-font transmission-gtk galculator xorg-xinput --noconfirm
+sudo pacman -S flatpak git leafpad rofi thunar thunar-volman thunar-archive-plugin flameshot terminus-font transmission-gtk galculator xorg-xinput --noconfirm
 
 sudo pacman -S cmus ttf-font-awesome --noconfirm
 
@@ -60,6 +60,7 @@ echo -e '# mouse acceleration\nexec --no-startup-id xinput --set-prop 8 'libinpu
 echo -e '# galculator\nbindsym F2 exec --no-startup-id galculator\n' >> ~/.config/i3/config
 
 # feh
+mkdir -p ~/Imagens && mkdir -p ~/Imagens/wallpaper
 echo -e '# feh\nexec --no-startup-id feh feh --bg-scale /home/leo/Imagens/wallpaper/day.png\n' >> ~/.config/i3/config
 
 #sudo ln -s /opt/sublime_text/sublime_text /usr/bin/
