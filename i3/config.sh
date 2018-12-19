@@ -29,7 +29,7 @@ sudo pacman -Syu sublime-text --noconfirm
 
 # xterm
 curl -s -o ~/.Xdefaults 'https://raw.githubusercontent.com/leoarch/arch-linux/master/i3/xterm.txt'
-xrdb .Xdefaults
+#xrdb .Xdefaults
 
 ################
 ### i3config ###
