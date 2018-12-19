@@ -18,7 +18,7 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
-sudo yay -S google-chrome teamviewer ttf-font-awesome-4 ---noconfirm
+sudo yay -S ttf-font-awesome-4 ---noconfirm
 
 ###########
 
