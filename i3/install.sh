@@ -32,7 +32,7 @@ Iniciando a Instalação i3
 =========================${__O}
 STI
 
-echo -e "\nVocê está instalando xfce com suporte de drivers para:\n"
+echo -e "\nVocê está instalando o i3 com suporte de drivers para:\n"
 
 if [ "$_notebook" == "s" ]; then
 	echo -e "${_y}Notebook${_e}"
@@ -61,12 +61,12 @@ pacman -S i3-gaps i3blocks --noconfirm
 echo -e "${_g}==> Instalando utilitários${_e}"; sleep 1 # mude de acordo com suas necessidades
 pacman -S terminus-font ttf-dejavu termite gvfs rofi sudo --noconfirm
 
-# echo -e "${_g}==> Instalando thunar e plugins${_e}"; sleep 1
-# pacman -S thunar thunar-volman thunar-archive-plugin  --noconfirm
+echo -e "${_g}==> Instalando thunar e plugins${_e}"; sleep 1
+pacman -S thunar thunar-volman thunar-archive-plugin  --noconfirm
 
 # firefox
-# echo -e "${_g}==> Instalando firefox${_e}"; sleep 1
-# pacman -S firefox firefox-i18n-pt-br flashplugin --noconfirm
+echo -e "${_g}==> Instalando firefox${_e}"; sleep 1
+pacman -S firefox firefox-i18n-pt-br flashplugin --noconfirm
 
 # audio
 echo -e "${_g}==> Instalando audio${_e}"; sleep 1
@@ -92,17 +92,21 @@ localectl set-x11-keymap br abnt2
 echo -e "${_g}==> Criando arquivo de configuração para keyboard br abnt${_e}"; sleep 1
 curl -s -o /etc/X11/xorg.conf.d/10-evdev.conf 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/xorg.conf.d/keyboard'
 
+# startx
+echo -e "${_g}==> Configurando pra iniciar o i3${_o}"; sleep 1
+echo 'exec i3' > ~/.xinitrc; sleep 1
+
 # configurando lightdm
-echo -e "${_g}==> Instalando e configurando gerenciador de login lightdm${_e}"; sleep 1
-pacman -S lightdm lightdm-gtk-greeter --noconfirm
-sed -i 's/^#greeter-session.*/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
-sed -i '/^#greeter-hide-user=/s/#//' /etc/lightdm/lightdm.conf
-curl -s -o /usr/share/pixmaps/bg-lightdm.jpg 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/bg-lightdm.jpg'
-echo -e "[greeter]\nbackground=/usr/share/pixmaps/bg-lightdm.jpg" > /etc/lightdm/lightdm-gtk-greeter.conf
+# echo -e "${_g}==> Instalando e configurando gerenciador de login lightdm${_e}"; sleep 1
+# pacman -S lightdm lightdm-gtk-greeter --noconfirm
+# sed -i 's/^#greeter-session.*/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
+# sed -i '/^#greeter-hide-user=/s/#//' /etc/lightdm/lightdm.conf
+# curl -s -o /usr/share/pixmaps/bg-lightdm.jpg 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/bg-lightdm.jpg'
+# echo -e "[greeter]\nbackground=/usr/share/pixmaps/bg-lightdm.jpg" > /etc/lightdm/lightdm-gtk-greeter.conf
 
 # enable services
 echo -e "${_g}==> Habilitando serviços para serem iniciados com o sistema${_e}"; sleep 1
-systemctl enable lightdm
+#systemctl enable lightdm
 systemctl enable NetworkManager
 
 cat <<EOI
