@@ -82,7 +82,7 @@ pacman -S xdg-user-dirs --noconfirm && xdg-user-dirs-update
 
 # iniciar i3
 echo -e "${_g}==> Configurando pra iniciar o i3${_e}"; sleep 1
-echo 'exec i3' > ~/home/${_user}/.xinitrc
+echo 'exec i3' > /home/${_user}/.xinitrc
 
 # keyboard X11 br abnt2
 echo -e "${_g}==> Setando keymap br abnt2 no ambiente X11${_e}"; sleep 1
@@ -91,10 +91,6 @@ localectl set-x11-keymap br abnt2
 # keyboard
 echo -e "${_g}==> Criando arquivo de configuração para keyboard br abnt${_e}"; sleep 1
 curl -s -o /etc/X11/xorg.conf.d/10-evdev.conf 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/xorg.conf.d/keyboard'
-
-# startx
-echo -e "${_g}==> Configurando pra iniciar o i3${_o}"; sleep 1
-echo 'exec i3' > ~/.xinitrc; sleep 1
 
 # configurando lightdm
 # echo -e "${_g}==> Instalando e configurando gerenciador de login lightdm${_e}"; sleep 1
