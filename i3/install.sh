@@ -77,7 +77,7 @@ echo -e "${_g}==> Instalando utilitários de rede${_e}"; sleep 1
 pacman -S networkmanager network-manager-applet --noconfirm
 
 # criar diretórios
-echo -e "${_g}==> Criando diretórios{_e}"; sleep 1
+echo -e "${_g}==> Criando diretórios${_e}"; sleep 1
 pacman -S xdg-user-dirs --noconfirm && xdg-user-dirs-update
 
 # iniciar i3
@@ -93,17 +93,21 @@ echo -e "${_g}==> Criando arquivo de configuração para keyboard br abnt${_e}";
 curl -s -o /etc/X11/xorg.conf.d/10-evdev.conf 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/xorg.conf.d/keyboard'
 
 # configurando lightdm
-# echo -e "${_g}==> Instalando e configurando gerenciador de login lightdm${_e}"; sleep 1
-# pacman -S lightdm lightdm-gtk-greeter --noconfirm
-# sed -i 's/^#greeter-session.*/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
-# sed -i '/^#greeter-hide-user=/s/#//' /etc/lightdm/lightdm.conf
-# curl -s -o /usr/share/pixmaps/bg-lightdm.jpg 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/bg-lightdm.jpg'
-# echo -e "[greeter]\nbackground=/usr/share/pixmaps/bg-lightdm.jpg" > /etc/lightdm/lightdm-gtk-greeter.conf
+echo -e "${_g}==> Instalando e configurando gerenciador de login lightdm${_e}"; sleep 1
+pacman -S lightdm lightdm-gtk-greeter --noconfirm
+sed -i 's/^#greeter-session.*/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
+sed -i '/^#greeter-hide-user=/s/#//' /etc/lightdm/lightdm.conf
+curl -s -o /usr/share/pixmaps/bg-lightdm.jpg 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/bg-lightdm.jpg'
+echo -e "[greeter]\nbackground=/usr/share/pixmaps/bg-lightdm.jpg" > /etc/lightdm/lightdm-gtk-greeter.conf
 
 # enable services
 echo -e "${_g}==> Habilitando serviços para serem iniciados com o sistema${_e}"; sleep 1
 #systemctl enable lightdm
 systemctl enable NetworkManager
+
+# bash
+#[[ ! -a /tmp/.X11-unix/X0 ]] && startx
+
 
 cat <<EOI
 ${__A}===
