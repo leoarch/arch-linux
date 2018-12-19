@@ -6,7 +6,7 @@
 ### i3config ###
 ################
 
-sudo pacman -S flatpak git leafpad rofi thunar thunar-volman thunar-archive-plugin flameshot terminus-font transmission-gtk galculator xorg-xinput --noconfirm
+sudo pacman -S flatpak git leafpad rofi thunar thunar-volman thunar-archive-plugin flameshot terminus-font transmission-gtk galculator xorg-xinput go --noconfirm
 
 sudo pacman -S cmus ttf-font-awesome --noconfirm
 
@@ -28,7 +28,8 @@ echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable
 sudo pacman -Syu sublime-text --noconfirm
 
 # xterm
-echo -e '*xterm*background: #101010\n*xterm*foreground: #d0d0d0\n*xterm*cursorColor: #d0d0d0\nxterm*faceName: xos4 Terminus\nxterm*faceSize: 10' > ~/.Xdefaults && xrdb .Xdefaults
+curl -s -o ~/.Xdefaults 'https://raw.githubusercontent.com/leoarch/arch-linux/master/i3/xterm.txt'
+xrdb .Xdefaults
 
 ################
 ### i3config ###
