@@ -39,6 +39,7 @@ curl -s -o ~/.Xdefaults 'https://raw.githubusercontent.com/leoarch/arch-linux/ma
 sed -i 's/status_command i3status/status_command i3blocks -c ~\/.config\/i3\/i3blocks\/i3blocks.conf\n\tcolors {\n\t\tseparator #969896\n\t\tbackground #1d1f21\n\t\tstatusline #c5c8c6\n\t\tfocused_workspace #81a2be #81a2be #1d1f21\n\t\tactive_workspace#373b41 #373b41 #ffffff\n\t\tinactive_workspace#282a2e #282a2e #969896\n\t\turgent_workspace#cc6666 #cc6666 #ffffff\n\t}/' ~/.config/i3/config
 
 # i3blocks config
+mkdir -p ~/.config/i3/i3blocks/
 curl -s -o ~/.config/i3/i3blocks/i3blocks.conf 'https://raw.githubusercontent.com/leoarch/arch-linux/master/i3/i3blocks.conf'
 
 # google-chrome
