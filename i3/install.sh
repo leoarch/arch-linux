@@ -59,7 +59,7 @@ echo -e "${_g}==> Instalando i3${_e}"; sleep 1
 pacman -S i3-gaps i3blocks --noconfirm
 
 echo -e "${_g}==> Instalando utilitários${_e}"; sleep 1 # mude de acordo com suas necessidades
-pacman -S terminus-font ttf-dejavu termite gvfs rofi sudo --noconfirm
+pacman -S terminus-font ttf-dejavu termite gvfs sudo --noconfirm
 
 echo -e "${_g}==> Instalando thunar e plugins${_e}"; sleep 1
 pacman -S thunar thunar-volman thunar-archive-plugin  --noconfirm
