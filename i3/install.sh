@@ -102,7 +102,7 @@ echo -e "[greeter]\nbackground=/usr/share/pixmaps/bg-lightdm.jpg" > /etc/lightdm
 
 # enable services
 echo -e "${_g}==> Habilitando serviços para serem iniciados com o sistema${_e}"; sleep 1
-#systemctl enable lightdm
+systemctl enable lightdm
 systemctl enable NetworkManager
 
 # bash
