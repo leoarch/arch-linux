@@ -6,9 +6,7 @@
 ### i3config ###
 ################
 
-sudo pacman -S flatpak git leafpad rofi thunar thunar-volman thunar-archive-plugin flameshot terminus-font transmission-gtk galculator xorg-xinput go --noconfirm
-
-sudo pacman -S cmus ttf-font-awesome --noconfirm
+sudo pacman -S flatpak git leafpad rofi flameshot transmission-gtk galculator go xorg-xinput --noconfirm # xorg-xinput
 
 ###########
 ### AUR ###
@@ -18,7 +16,7 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
-yay -S ttf-font-awesome-4 ---noconfirm
+yay -S google-chrome --noconfirm
 
 ###########
 
