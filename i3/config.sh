@@ -6,7 +6,7 @@
 ### i3config ###
 ################
 
-sudo pacman -S flatpak git leafpad rofi flameshot transmission-gtk galculator go xorg-xinput --noconfirm # xorg-xinput
+sudo pacman -S flatpak git leafpad rofi flameshot transmission-gtk galculator go feh xorg-xinput --noconfirm # xorg-xinput
 
 ###########
 ### AUR ###
