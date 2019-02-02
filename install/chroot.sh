@@ -10,8 +10,6 @@ _user="leo"
 _proot="123"
 _puser="123"
 
-_dualboot="s"
-
 # cores
 _r="\e[31;1m";_w="\e[37;1m";_g="\e[32;1m";_o="\e[m";
 
@@ -88,6 +86,18 @@ $_puser
 $_puser
 EOF
 sleep 0.5
+
+# network
+echo -e "${_g}==> Instalando utilitários de rede${_o}"; sleep 1
+pacman -S networkmanager network-manager-applet --noconfirm
+
+if [ "_notebook" == "s"]; then
+	echo -e "${_g}==> Instalando drivers do wifi${_o}"; sleep 1
+	pacman -S wireless_tools wpa_supplicant wpa_actiond --noconfirm; sleep 1
+fi
+
+echo -e "${_g}==> Habilitando network manager${_o}"
+systemctl enable NetworkManager
 
 echo -e "${_g}==> mkinitcpio${_o}"
 mkinitcpio -p linux

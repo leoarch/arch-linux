@@ -85,6 +85,16 @@ _root="/dev/sda${_root}"; export _root
 [ -n "$_swap" ] && { _swap="/dev/sda${_swap}"; export _swap; }
 [ -n "$_home" ] && { _home="/dev/sda${_home}"; export _home; }
 
+echo
+
+echo -en "${_g}Você está instalando em dualboot? Didigte s para (Sim) ou n para (Não):${_o}${_w} "; read _dualboot
+[[ "$_dualboot" != @(s|n) ]] && { echo -e "\n${_am}Digite uma opção válida! s ou n\n${_o}"; exit 1; }
+export _dualboot
+
+echo -en "${_g}Você está instalando em um notebook? Didigte s para (Sim) ou n para (Não):${_o}${_w} "; read _notebook
+[[ "$_notebook" != @(s|n) ]] && { echo -e "\n${_am}Digite uma opção válida! s ou n\n${_o}"; exit 1; }
+export _notebook
+
 tput reset
 
 cat <<STI
@@ -114,6 +124,20 @@ if [ "$_home" != "" ]; then
 	echo -e " ${_g}HOME${_o} = $_home\n"
 else
 	echo -e " ${_g}HOME${_o} = SEM HOME\n"
+fi
+
+echo "--------------------------------"
+
+if [ "$_dualboot" == "s" ]; then
+	echo -e " ${_g}DUAL BOOT${_o} = SIM\n"
+else
+	echo -e " ${_g}DUAL BOOT${_o} = NAO\n"
+fi
+
+if [ "$_notebook" == "s" ]; then
+	echo -e " ${_g}NOTEBOOK${_o} = SIM\n"
+else
+	echo -e " ${_g}NOTEBOOK${_o} = NAO\n"
 fi
 
 echo "==========================================================="
