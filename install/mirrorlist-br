@@ -1,2 +1,5 @@
 ## Brazil
-Server = http://br.mirror.archlinux-br.org/$repo/os/$arch
+# Server = http://br.mirror.archlinux-br.org/$repo/os/$arch
+
+## Canadá
+Server = http://mirror.sergal.org/archlinux/$repo/os/$arch
