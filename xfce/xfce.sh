@@ -73,6 +73,10 @@ pacman -S firefox firefox-i18n-pt-br flashplugin --noconfirm
 echo -e "${_g}==> Instalando audio${_o}"; sleep 1
 pacman -S alsa-utils pulseaudio pavucontrol --noconfirm
 
+# network
+echo -e "${_g}==> Instalando utilitários de rede${_o}"; sleep 1
+pacman -S networkmanager network-manager-applet --noconfirm
+
 # essenciais
 echo -e "${_g}==> Instalando fonte, xterm e lixeira${_o}"; sleep 1
 pacman -S sudo ttf-dejavu xterm gvfs --noconfirm # gvfs = lixeira
@@ -114,6 +118,7 @@ echo -e "[greeter]\nbackground=/usr/share/pixmaps/arch-02.png" > /etc/lightdm/li
 # enable services
 echo -e "${_g}==>Habilitando serviços para serem iniciados com o sistema${_o}"; sleep 1
 systemctl enable lightdm
+systemctl enable NetworkManager
 
 cat <<EOI
  ${__A}=============

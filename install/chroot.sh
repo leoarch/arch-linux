@@ -87,17 +87,10 @@ $_puser
 EOF
 sleep 0.5
 
-# network
-echo -e "${_g}==> Instalando utilitários de rede${_o}"; sleep 1
-pacman -S networkmanager network-manager-applet --noconfirm
-
 if [ "_notebook" == "s"]; then
 	echo -e "${_g}==> Instalando drivers do wifi${_o}"; sleep 1
 	pacman -S wireless_tools wpa_supplicant wpa_actiond --noconfirm; sleep 1
 fi
-
-echo -e "${_g}==> Habilitando network manager${_o}"
-systemctl enable NetworkManager
 
 echo -e "${_g}==> mkinitcpio${_o}"
 mkinitcpio -p linux
