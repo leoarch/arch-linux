@@ -89,7 +89,7 @@ sleep 0.5
 
 if [ "$_notebook" == "s"]; then
 	echo -e "${_g}==> Instalando drivers do wifi${_o}"; sleep 1
-	pacman -S wireless_tools wpa_supplicant wpa_actiond --noconfirm; sleep 1
+	pacman -S wireless_tools wpa_supplicant wpa_actiond acpi acpid --noconfirm; sleep 1
 fi
 
 echo -e "${_g}==> mkinitcpio${_o}"
