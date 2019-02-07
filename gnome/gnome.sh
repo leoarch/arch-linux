@@ -56,8 +56,8 @@ echo -e "${_g}===> Instalando utilitários de rede${_o}"; sleep 1
 pacman -S networkmanager network-manager-applet --noconfirm
 
 # audio
-# echo -e "${_g}===> Instalando utilitários de audio${_o}"; sleep 1
-# pacman -S alsa-utils --noconfirm
+echo -e "${_g}===> Instalando utilitários de audio${_o}"; sleep 1
+pacman -S alsa-utils --noconfirm
 
 # mudar dhcpcd para dhclient (em um caso particular, meu roteador só funcionou com dhclient)
 # echo -e "${_g}===> Configurando dhcp para dhclient${_o}"; sleep 1
