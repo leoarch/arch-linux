@@ -22,8 +22,6 @@ elif [[ "$_vm" == @(n|N) ]]; then
 	fi
 fi
 
-echo
-
 tput reset
 
 cat <<STI
@@ -56,29 +54,29 @@ elif [ "$_virtualbox" == "s" ]; then # virtualbox
 fi
 
 echo -e "${_g}==> Instalando i3${_e}"; sleep 1
-pacman -S i3-gaps i3blocks --noconfirm
+pacman -S i3-gaps --noconfirm
 
 echo -e "${_g}==> Instalando utilitários${_e}"; sleep 1 # mude de acordo com suas necessidades
-pacman -S terminus-font ttf-dejavu termite gvfs sudo --noconfirm
+pacman -S terminus-font termite gvfs sudo --noconfirm
 
-echo -e "${_g}==> Instalando thunar e plugins${_e}"; sleep 1
-pacman -S thunar thunar-volman thunar-archive-plugin  --noconfirm
+# echo -e "${_g}==> Instalando thunar e plugins${_e}"; sleep 1
+# pacman -S thunar thunar-volman thunar-archive-plugin  --noconfirm
 
 # firefox
 echo -e "${_g}==> Instalando firefox${_e}"; sleep 1
 pacman -S firefox firefox-i18n-pt-br flashplugin --noconfirm
 
-# audio
+# audio renove pavucontrol
 echo -e "${_g}==> Instalando audio${_e}"; sleep 1
-pacman -S alsa-utils pulseaudio pavucontrol --noconfirm
+pacman -S alsa-utils pulseaudio --noconfirm
 
 # network
 echo -e "${_g}==> Instalando utilitários de rede${_e}"; sleep 1
 pacman -S networkmanager network-manager-applet --noconfirm
 
 # criar diretórios
-echo -e "${_g}==> Criando diretórios${_e}"; sleep 1
-pacman -S xdg-user-dirs --noconfirm && xdg-user-dirs-update
+# echo -e "${_g}==> Criando diretórios${_e}"; sleep 1
+# pacman -S xdg-user-dirs --noconfirm && xdg-user-dirs-update
 
 # iniciar i3
 echo -e "${_g}==> Configurando pra iniciar o i3${_e}"; sleep 1
@@ -97,12 +95,12 @@ echo -e "${_g}==> Instalando e configurando gerenciador de login lightdm${_e}"; 
 pacman -S lightdm lightdm-gtk-greeter --noconfirm
 sed -i 's/^#greeter-session.*/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
 sed -i '/^#greeter-hide-user=/s/#//' /etc/lightdm/lightdm.conf
-curl -s -o /usr/share/pixmaps/bg-lightdm.jpg 'https://raw.githubusercontent.com/leoarch/arch-linux/master/xfce/bg-lightdm.jpg'
-echo -e "[greeter]\nbackground=/usr/share/pixmaps/bg-lightdm.jpg" > /etc/lightdm/lightdm-gtk-greeter.conf
+curl -s -o /usr/share/pixmaps/matrix-1.jpg 'https://raw.githubusercontent.com/leoarch/arch-linux/master/i3/wallpaper/matrix-1.jpg'
+echo -e "[greeter]\nbackground=/usr/share/pixmaps/matrix-1.jpg" > /etc/lightdm/lightdm-gtk-greeter.conf
 
 # enable services
 echo -e "${_g}==> Habilitando serviços para serem iniciados com o sistema${_e}"; sleep 1
-systemctl enable lightdm
+# systemctl enable lightdm
 systemctl enable NetworkManager
 
 # bash
